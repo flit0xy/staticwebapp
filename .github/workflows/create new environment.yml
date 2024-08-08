@@ -1,0 +1,25 @@
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+
+jobs:
+  build_and_deploy_job:
+    ...
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          ...
+          deployment_environment: "staging"
